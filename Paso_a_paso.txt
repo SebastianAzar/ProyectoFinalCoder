@@ -1,0 +1,76 @@
+1 - Crear carpeta donde quiero que este mi proyecto
+2 - Crar entorno virtual "py -m venv venv"
+3 - Activar entorno virtual ". venv/scripts/activate"
+4 - Instalar django "pip install django"
+5 - Crear proyecto de django "django-admin startproject miproyecto2"
+6 - Agregar "git init"  escribiendo "git init" en la terminal
+7 - Crar archivo ".gitignore" y escribimos venv en la primer linea
+        tambien estos:  db.sqlite3
+                        __pycache__
+8 - hacemos un "py manage.py migrate" en la terminal
+9 - hacemos un "py manage.py runserver" que ahì te da la ip a ver si anda
+10 - para cortarlo hay que hacer un ctrl + c
+
+---------------------- Ahí tengo el proyecto crado (revisar tema github) -------------------------------------------
+Crear App
+1 - py manage.py startapp AppCoder 
+2 - crear modelos (apps) en el archivo models.py dentro de la carpeta AppCoder
+3 - agregar app en el archivo settings en /miproyecto/settings.py
+4 - py manage.py makemigrations
+5 - py manage.py sqlmigrate AppCoder 0001
+6 - py manage.py migrate
+7 - Ahi podemos chequear el el archivo de sqlite3 que se crearon nuestras apps
+
+---------------------- Ahí tengo mis apps hechas modelos ----------------------------------------------------------
+
+Ahora crear urls para estas de manera ordenada
+1 - En AppCoder crear el archivo urls.py
+2 - Crear las urls en ese archivo que quiero (aun sin views ya que todavia no las cree)
+3 - En el archivo de urls de mi proyecto general, agregar el import "include" y agregar el path a las urls de AppCoder
+
+---------------------- Ahí estan andando mis Urls pero sin views ni templates --------------------------------------
+Crear templates
+1 - creamos una carpeta templates dentro del proyecto general y una que se llame AppCoder dentro de ella
+2 - Dentro de esta carpeta creamos un html por vista para la app (incluido inicio)
+3 - Por ahora los dejamos vacios
+4 - Vamos a views y creamos un def para cada template con su path. Hacemos un render
+5 - Volvemos a urls y agregamos el path a nuestro template para cada uno y le agragamos un nombre "name='algo'"
+6 - Ir al settings.py de miproyecto y agregar en templates -> dirs la direccion de la carpeta de templates
+
+---------------------- Tenemos nuestros archivos creados y marcados correctamente sus path pero vacios -------------
+Bajar template de html
+1 - Bajamos un template
+2 - Dentro de la carpeta AppCoder creamos una carpeta que se llame static
+3 - Una carpeta que se llame AppCoder dentro de static
+4 - Copiamos y pegamos lo que Bajamos
+5 - Vamos al archivo index.html y copiamos y pegamos en nuestro template de "inicio"
+6 - En el template de inicio agregamos abajo del head: {% load static %}
+7 - Cambiamos la direccion del archivo de styles: <link href="{% static 'AppCoder/css/styles.css' %}" rel="stylesheet" />
+
+--------------------- Ahi tenemos el template andando como lo bajamos de internet -----------------------------------
+Editar html
+1 - Editamos el html descargado para que diga y tenga lo que queremos
+2 - Copiamos header y footer en los otros templates para que sean iguales
+3 - Agregamos links a nuestros templates creando botones en el html
+
+--------------------- Esta andando todo lo que son nuestros templates -----------------------------------------------
+Dar de alta el panel
+1 - En el admin.py que esta en AppCoder importamos nuestros models
+2 - Hacemos un "admin.site.register(Categoria)" por cada model
+3 - Creamos un super usuario con mail y contraseña "py manage.py createsuperuser"
+4 - Desde aca podemos crear y modificar datos de tablas, usuarios, etc..
+
+
+
+
+
+
+--------------- COMO FUNCIONA MI PAGINA ---------------------
+
+La pagina de inicio muestra los tres models que tiene con un boton debajo de ellos para ir a los formularios y agregar
+datos a los mismos (lleva a sus respectivos templates).
+Los dos botones del header ("Sebastian Azar" e "Inicio") llevan nuevamente al template de inicio.
+
+
+
+
